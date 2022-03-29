@@ -14,16 +14,22 @@ word6 = "dcassyqw@microsoft.com"
 with open('Midterm-if.txt','r') as hFile:
     for number, line in enumerate(hFile):
         if word1 in line:
+            print (line)
             total += number
         elif word2 in line:
+            print (line)
             total += number
         elif word3 in line:
+            print (line)
             total += number
         elif word4 in line:
+            print (line)
             total += number
         elif word5 in line:
+            print (line)
             total += number
         elif word6 in line:
+            print (line)
             total += number
 #Printing the final total
 print (f"The total is:{total}")
