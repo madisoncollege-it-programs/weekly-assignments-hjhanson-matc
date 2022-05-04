@@ -19,8 +19,8 @@ url = f'http://ipinfo.io/{args.varIP}/json'
 
 jsonResp = requests.get(url)
 
-dictResp = json.loads(jsonResp.text)
+myDict = json.loads(jsonResp.text)
 
 
-for key in dictResp.keys():
-    print(f"{key: <10}:{dictResp[key]: <10}")
+for key in myDict.keys():
+    print(f"{key: <10}:{myDict[key]: <10}")
