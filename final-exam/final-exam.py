@@ -44,9 +44,9 @@ def parse_json(URL):
     res = requests.get(f'{URL}')
     res.raise_for_status()
     jsonfile = json.loads(res.text)
-    for key in jsonfile:
-        if key['title'] == "The Shining":
-            print (jsonfile["publisher"])
+    for music_or_book in jsonfile['Music And Books']:
+        if music_or_book['title'] == "The Shining":
+            print (music_or_book["publish_info"]["publisher"])
 
 def socket_client(ip):
     out_message = b"secret"
