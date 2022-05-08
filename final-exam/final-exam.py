@@ -26,17 +26,11 @@ print (f"Name: Hunter Hanson\n{URL}")
 
 def get_response(URL):
     res = requests.get(f'{URL}')
-    try:
-        res.raise_for_status()
-    except:
-        print ('There was a problem: %s' % (exc))
+    res.raise_for_status()
     print ("ANSWER:", res.text)
 def parse_string(URL):
     res = requests.get(f'{URL}')
-    try:
-        res.raise_for_status()
-    except:
-        print ('There was a problem: %s' % (exc))
+    res.raise_for_status()
     HTMLsoup = bs4.BeautifulSoup(res.text, 'html.parser')
     h3elem = HTMLsoup.select('H3')
     string = h3elem[0].getText()
@@ -44,20 +38,14 @@ def parse_string(URL):
     print (f"ANSWER: {sliced} Hunter")
 def parse_header(URL):
     res = requests.get(f'{URL}')
-    try:
-        res.raise_for_status()
-    except:
-        print ('There was a problem: %s' % (exc))
+    res.raise_for_status()
     print (f"ANSWER:", res.headers['MATC-HEADER'])
 def parse_json(URL):
     res = requests.get(f'{URL}')
-    try:
-        res.raise_for_status()
-    except:
-        print ('There was a problem: %s' % (exc))
-    jsonfile = json.dumps(json.loads(res.text))
+    res.raise_for_status()
+    jsonfile = json.loads(res.text)
     for key in jsonfile:
-        if key['title'] == 'The Shining':
+        if key['title'] == "The Shining":
             print (jsonfile["publisher"])
 
 def socket_client(ip):
