@@ -17,10 +17,6 @@ if len(sys.argv) == 1:
 
 args = parser.parse_args()
 
-if not 1 <= args.varFunction <= 5:
-    (parser.print_help())
-    sys.exit()
-
 URL = f'http://{args.varIP}/q{args.varFunction}'
 print (f"Name: Hunter Hanson\n{URL}")
 
@@ -28,6 +24,7 @@ def get_response(URL):
     res = requests.get(f'{URL}')
     res.raise_for_status()
     print ("ANSWER:", res.text)
+
 def parse_string(URL):
     res = requests.get(f'{URL}')
     res.raise_for_status()
@@ -36,10 +33,12 @@ def parse_string(URL):
     string = h3elem[0].getText()
     sliced = string[4:21:2]
     print (f"ANSWER: {sliced} Hunter")
+
 def parse_header(URL):
     res = requests.get(f'{URL}')
     res.raise_for_status()
     print (f"ANSWER:", res.headers['MATC-HEADER'])
+
 def parse_json(URL):
     res = requests.get(f'{URL}')
     res.raise_for_status()
@@ -78,3 +77,7 @@ elif args.varFunction == 4:
     parse_json(URL)
 elif args.varFunction == 5:
     socket_client(args.varIP)
+else:
+     (parser.print_help())
+     sys.exit()
+
